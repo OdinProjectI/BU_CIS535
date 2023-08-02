@@ -45,7 +45,7 @@ RETURN
 
     FROM Customers c
     JOIN Bid b ON b.customer_id = c.customer_id
-    WHERE FORMAT(b.bid_date, 'yyyy-MM') = FORMAT(GETDATE(), 'yyyy-MM')
+    WHERE MONTH(b.bid_date) = MONTH(DATEADD(month, -1, GETDATE() ))
 )
 
 SELECT * FROM SearchBidLastMonth()
